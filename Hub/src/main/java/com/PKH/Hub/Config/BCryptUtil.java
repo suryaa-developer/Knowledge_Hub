@@ -17,11 +17,20 @@ public class BCryptUtil {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
        http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
+               auth ->auth.anyRequest().permitAll()).
+               httpBasic(httpbasic ->{});
+
+         return http.build(); }
+    /*
+     @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+       http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
                auth ->auth.requestMatchers("/signup","/login").
                        permitAll().anyRequest().authenticated()).
                httpBasic(httpbasic ->{});
 
          return http.build(); }
+     */
 
   public PasswordEncoder PasswordEncoder(){
       return new BCryptPasswordEncoder();
