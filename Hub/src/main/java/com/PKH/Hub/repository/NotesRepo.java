@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface NotesRepo  extends JpaRepository<Notes,Integer> {
-    List<Notes> findByUser_Id(int userId);
+public interface NotesRepo  extends JpaRepository<Notes,Long> {
+    List<Notes> findByUser_Id(long userId);
 
-    Optional<Notes> findByUser_IdAndId(int userId, int id);
+    Optional<Notes> findByUser_IdAndId(long userId, long id);
 }
